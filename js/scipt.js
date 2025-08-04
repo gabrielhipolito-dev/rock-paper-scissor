@@ -46,8 +46,12 @@ do {
 
     if(roundResult === "Computer Win"){
        computerScore++;
+       console.log(`Computer Wins Round ${round + 1}`)
     } else if(roundResult === "Human Win"){
         humanScore++;
+        console.log(`Human Wins Round ${round + 1}`)
+    } else{
+        console.log(`Tie Round ${round + 1}`)
     }
     round++;
 
