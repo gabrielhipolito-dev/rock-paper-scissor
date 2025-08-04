@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 const getComputerChoice = () => {
     const choice = ["rock", "paper", "scissor"];
     const index = Math.floor(Math.random() * choice.length)
@@ -8,8 +11,9 @@ const getComputerChoice = () => {
 const getHumanChoice = () => {
     const text = "Rock\nPaper\nScissor";
     let choice = prompt(text).toLowerCase();
+
     while(!["rock", "paper", "scissor"].includes(choice)){
-         choice = prompt("Invalid choice. Please choose from: \nRock\nPaper\nScissor").toLowerCase();
+        choice = prompt("Invalid choice. Please choose from: \nRock\nPaper\nScissor").toLowerCase();
     }
     return choice
     
@@ -34,24 +38,32 @@ let computerSelection;
 let humanSelection;
 let roundResult;
 
-
+let round = 0;
 do {
     computerSelection = getComputerChoice();
     humanSelection = getHumanChoice();
     roundResult = determineWinner(computerSelection, humanSelection);
 
+    if(roundResult === "Computer Win"){
+       computerScore++;
+    } else if(roundResult === "Human Win"){
+        humanScore++;
+    }
+    round++;
+
     console.log(`Computer Picks: ${computerSelection}`);
     console.log(`Human Picks: ${humanSelection}`);
+    console.log("------------Score---------------")
+    console.log(`Computer: ${computerScore}`);
+    console.log(`Human: ${humanScore}`);
+} while (round < 5);
 
-    if(roundResult === "Draw"){
-        console.log("Its a draw")
-    } else if(roundResult === "Computer Win"){
-        console.log("Computer Win")
-    }
-} while (roundResult == "Draw" || roundResult === "Computer win");
-
-console.log("-------------------\n   Game Over")
-
-
-console.log(`Computer Picks: ${computerSelection}\nHuman Picks: ${humanSelection}`)
-console.log("Humans Wins")
+console.log("---------------\n    The Result");
+console.log(`Computer: ${computerScore}\nHuman: ${humanScore}`)
+if(computerScore === humanScore){
+    console.log("It's a draw")
+} else if(computerScore > humanScore){
+    console.log("Computer Wins\nBetter Luck Next time")
+} else{
+    console.log("Congrats\nYou win")
+}
