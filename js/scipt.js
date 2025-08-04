@@ -1,14 +1,14 @@
 let humanScore = 0;
 let computerScore = 0;
 
-const getComputerChoice = () => {
+let getComputerChoice = function() {
     const choice = ["rock", "paper", "scissor"];
-    const index = Math.floor(Math.random() * choice.length)
+    let index = Math.floor(Math.random() * choice.length)
     return choice[index] 
 }
 
 
-const getHumanChoice = () => {
+let getHumanChoice = function() {
     const text = "Rock\nPaper\nScissor";
     let choice = prompt(text).toLowerCase();
 
@@ -19,7 +19,7 @@ const getHumanChoice = () => {
     
 }
 
-const determineWinner = (computerchoice, humanchoice) =>{
+let determineWinner = (computerchoice, humanchoice) =>{
   
     if(computerchoice === humanchoice){
         return "Draw"
