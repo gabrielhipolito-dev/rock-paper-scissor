@@ -19,7 +19,7 @@ let getHumanChoice = function() {
     
 }
 
-let determineWinner = (computerchoice, humanchoice) =>{
+let determineWinner = function(computerchoice, humanchoice){
   
     if(computerchoice === humanchoice){
         return "Draw"
@@ -33,41 +33,46 @@ let determineWinner = (computerchoice, humanchoice) =>{
         return "Computer Win"
     }
 }
+let gameStart = function(){
+    let computerSelection;
+    let humanSelection;
+    let roundResult;
 
-let computerSelection;
-let humanSelection;
-let roundResult;
+    let round = 0;
 
-let round = 0;
-do {
-    computerSelection = getComputerChoice();
-    humanSelection = getHumanChoice();
-    roundResult = determineWinner(computerSelection, humanSelection);
+    do {
+        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        roundResult = determineWinner(computerSelection, humanSelection);
 
-    if(roundResult === "Computer Win"){
-       computerScore++;
-       console.log(`Computer Wins Round ${round + 1}`)
-    } else if(roundResult === "Human Win"){
-        humanScore++;
-        console.log(`Human Wins Round ${round + 1}`)
+        if(roundResult === "Computer Win"){
+        computerScore++;
+        console.log(`Computer Wins Round ${round + 1}`)
+        } else if(roundResult === "Human Win"){
+            humanScore++;
+            console.log(`Human Wins Round ${round + 1}`)
+        } else{
+            console.log(`Tie Round ${round + 1}`)
+        }
+        round++;
+
+        console.log(`Computer Picks: ${computerSelection}`);
+        console.log(`Human Picks: ${humanSelection}`);
+        console.log("------------Score---------------")
+        console.log(`Computer: ${computerScore}`);
+        console.log(`Human: ${humanScore}`);
+    } while (round < 5);
+
+    console.log("---------------\n    The Result");
+    console.log(`Computer: ${computerScore}\nHuman: ${humanScore}`)
+    if(computerScore === humanScore){
+        console.log("It's a draw")
+    } else if(computerScore > humanScore){
+        console.log("Computer Wins\nBetter Luck Next time")
     } else{
-        console.log(`Tie Round ${round + 1}`)
+        console.log("Congrats\nYou win")
     }
-    round++;
-
-    console.log(`Computer Picks: ${computerSelection}`);
-    console.log(`Human Picks: ${humanSelection}`);
-    console.log("------------Score---------------")
-    console.log(`Computer: ${computerScore}`);
-    console.log(`Human: ${humanScore}`);
-} while (round < 5);
-
-console.log("---------------\n    The Result");
-console.log(`Computer: ${computerScore}\nHuman: ${humanScore}`)
-if(computerScore === humanScore){
-    console.log("It's a draw")
-} else if(computerScore > humanScore){
-    console.log("Computer Wins\nBetter Luck Next time")
-} else{
-    console.log("Congrats\nYou win")
 }
+
+gameStart()
