@@ -11,7 +11,7 @@ let getComputerChoice = function() {
 let getHumanChoice = function() {
     const text = "Rock\nPaper\nScissor";
     let choice = prompt(text).toLowerCase();
-
+    // If the choice is not rock paper scisspr the wwhile loop execute
     while(!["rock", "paper", "scissor"].includes(choice)){
         choice = prompt("Invalid choice. Please choose from: \nRock\nPaper\nScissor").toLowerCase();
     }
@@ -39,7 +39,7 @@ let gameStart = function(){
     let roundResult;
 
     let round = 0;
-
+    // do while loop do  is to check if the round  
     do {
         console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         computerSelection = getComputerChoice();
